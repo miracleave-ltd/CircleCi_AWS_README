@@ -146,11 +146,11 @@ Laravelのライブラリパッケージ等をdockerコンテナ内にインス�
 > $ docker-compose exec app bash
 
 #### 2-3 インストールする
-> # cd my-laravel-app && composer install && cp ../docker/laravel/.env .env && chmod 777 -R storage/ && php artisan key:generate && php artisan config:cache && php artisan migrate 
+> $ cd my-laravel-app && composer install && cp ../docker/laravel/.env .env && chmod 777 -R storage/ && php artisan key:generate && php artisan config:cache && php artisan migrate 
 <br>
 > // コンテナを抜ける 
 <br>
-> # exit 
+> $ exit 
 
 #### 2-4 再起動する 
 > $ docker-compose down && docker-compose up
