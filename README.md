@@ -120,8 +120,21 @@ GitHubにログインして「New」ボタンを押下する
 （今回はmy-favarite-bookで設定)
 ![image](https://user-images.githubusercontent.com/66664167/92229246-20e42c00-eee4-11ea-8da7-aa408c91ee17.png)
 
+リポジトリ作成後画面
+![image](https://user-images.githubusercontent.com/66664167/92230877-c6989a80-eee6-11ea-942a-76feac5c08ad.png)
 
-#### 1-5 該当ディレクトリをリポジトリにあげる
+
+#### 1-5 ローカルの該当ソースをリポジトリに反映する
+> $ git init <br>
+> $ git add .<br>
+> $ git commit -m "init" <br>
+> $ git branch -M master <br>
+> $ git remote add origin https://github.com/[ユーザー名]/[リポジトリ名].git <br>
+> $ git push -u origin master <br>
+
+リポジトリ反映後画面
+![image](https://user-images.githubusercontent.com/66664167/92231621-07dd7a00-eee8-11ea-826a-235b83254d4b.png)
+
 
 
 
