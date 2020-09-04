@@ -114,7 +114,7 @@ CI/CDとは高度な継続的自動化と継続的監視をアプリケーショ
 
 #### 1-4 自分のGitHubにリポジトリを作成する
 GitHubにログインして「New」ボタンを押下する
-![image](https://user-images.githubusercontent.com/54019059/92228797-65bb9300-eee3-11ea-9e07-deda7692f36a.png)
+![image](https://user-images.githubusercontent.com/66664167/92230424-0f038880-eee6-11ea-967b-de06bb69fd20.png)
 
 「Repository name」を入力、「Public」にチェック（初期値）、「Create repository」ボタン押下し作成する
 （今回はmy-favarite-bookで設定)
@@ -122,6 +122,7 @@ GitHubにログインして「New」ボタンを押下する
 
 
 #### 1-5 該当ディレクトリをリポジトリにあげる
+
 
 
 
