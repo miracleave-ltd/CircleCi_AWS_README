@@ -136,6 +136,28 @@ GitHubにログインして「New」ボタンを押下する
 ![image](https://user-images.githubusercontent.com/66664167/92231621-07dd7a00-eee8-11ea-826a-235b83254d4b.png)
 
 
+### 2. 初期設定
+Laravelのライブラリパッケージ等をdockerコンテナ内にインストールする
+
+#### 2-1 コンテナを立ち上げる
+> $ docker-compose up -d
+
+#### 2-2 dockerコンテナに入る
+> $ docker-compose exec app bash
+
+#### 2-3 インストールする
+> # cd my-laravel-app && composer install && cp ../docker/laravel/.env .env && chmod 777 -R storage/ && php artisan key:generate && php artisan config:cache && php artisan migrate 
+<br>
+> // コンテナを抜ける 
+<br>
+> # exit 
+
+#### 2-4 再起動する 
+> $ docker-compose down && docker-compose up
+
+
+#### 2-5 ローカル上でアプリの起動を確認する
+> http://localhost:8989 にアクセスする
 
 
 
