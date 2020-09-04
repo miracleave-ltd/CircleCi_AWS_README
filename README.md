@@ -99,7 +99,32 @@ CI/CDとは高度な継続的自動化と継続的監視をアプリケーショ
 ## .やってみよう！
 
 ### 1. リポジトリを作成
+#### 1-1 GitHubにアクセスする
+[こちらから該当ファイルを取得する](https://github.com/miracleave-ltd/meet-up_CI-CD)
+
+#### 1-2 ZIPファイルをダウンロードする
+![image](https://user-images.githubusercontent.com/66664167/92227895-f3967e80-eee1-11ea-9584-617df0e14f53.png)
+
+#### 1-3 ローカルにディレクトリを作り、ダウンロードしたファイルを格納する
+ターミナルを使用します。
+
+> // ディレクトリ作成(任意の場所を指定して作成してください）<br>
+> $ mkdir [ファイルの格納場所のパス]/[ディレクトリ名]<br>
+> 例：$ mkdir mkdir ~/projects/myapp
+
+#### 1-4 自分のGitHubにリポジトリを作成する
+GitHubにログインして「New」ボタンを押下する
+![image](https://user-images.githubusercontent.com/54019059/92228797-65bb9300-eee3-11ea-9e07-deda7692f36a.png)
+
+「Repository name」を入力、「Public」にチェック（初期値）、「Create repository」ボタン押下し作成する
+（今回はmy-favarite-bookで設定)
+![image](https://user-images.githubusercontent.com/66664167/92229246-20e42c00-eee4-11ea-8da7-aa408c91ee17.png)
+
+
+#### 1-5 該当ディレクトリをリポジトリにあげる
+
 
 
 CI/CD パイプラインのさまざまなテストおよびリリースステージに合わせて自動化されたテストを作成する必要があるため、まとまった事前の投資も必要です。
+
 
