@@ -171,6 +171,37 @@ https://circleci.com/ja/vcs-authorize/
 
 
 #### 4-2 該当プロジェクトの設定をする
+##### 4-2-1 該当プロジェクトの「Set Up Project」を押下する
+![image](https://user-images.githubusercontent.com/66664167/92300453-c6a3a380-ef95-11ea-8aee-ab2a4078691c.png)
+
+##### 4-2-2 「Use Existing Config」ボタンを押下する
+![image](https://user-images.githubusercontent.com/66664167/92300489-2ac66780-ef96-11ea-922c-d56902bea456.png)
+
+##### 4-2-3 「Start Building」ボタンを押下する
+![image](https://user-images.githubusercontent.com/66664167/92300523-7aa52e80-ef96-11ea-8856-8511d7febf14.png)
+
+テストが開始される（各種設定前なのでFAILDになるが問題ありません）
+##### 4-2-4 「Project Setting」ボタンを押下する
+![image](https://user-images.githubusercontent.com/66664167/92300761-7417b680-ef98-11ea-9a75-a0ae99371953.png)
+
+##### 4-2-5 メニューの「SSH Keys」ボタンを押下する
+![image](https://user-images.githubusercontent.com/66664167/92300833-16379e80-ef99-11ea-87de-99bc615f8c53.png)
+
+##### 4-2-6 ページ下部の「Add SSH Keys」ボタンを押下する
+![image](https://user-images.githubusercontent.com/66664167/92301125-d58d5480-ef9b-11ea-9f27-ee3ce9b92fdc.png)
+
+##### 4-2-7 ターミナルを開き、EC2インスタンスにログインして、SSH Keyをコピーする
+
+> // EC2にログイン<br>
+> $ ssh -i ~/.ssh/[pem key名] [ユーザー名]@[IP]<br>
+
+> // SSH Keyが表示される<br>
+> $ cat ~/.ssh/id_rsa
+
+コピー
+![image](https://user-images.githubusercontent.com/66664167/92301975-2d7b8980-efa3-11ea-9ab9-461ff58fa09b.png)
+
+
 
 
 
