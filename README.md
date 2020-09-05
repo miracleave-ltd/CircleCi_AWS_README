@@ -48,39 +48,39 @@ CI/CDとは高度な継続的自動化と継続的監視をアプリケーショ
 ### Jenkins
 ![image](https://user-images.githubusercontent.com/66664167/92107197-5a536380-ee20-11ea-95b5-6488c0ecb79f.png)
 #### - メリット - <br>
-- 拡張性が高い。プロジェクトに合わせてカスタマイズしやすい
-- オンプレ上に構築するため、IPが固定される
-- ドキュメントが豊富で調査しやすい
+#NAME?
+#NAME?
+#NAME?
 
 #### - デメリット - <br>
-- サーバを用意する必要があるため、費用がかかる、準備に時間がかかる
-- 本番を含めワークフローに組み込むため、導入は計画的に行う必要がある
-- 保守・運用が必要なため管理を怠ると属人化しやすい
+#NAME?
+#NAME?
+#NAME?
 
 ### TravisCI
 ![image](https://user-images.githubusercontent.com/66664167/92107394-a9999400-ee20-11ea-80af-30f183fb4802.png)
 #### - メリット - <br>
-- Cloudであるため、サーバの管理・運用は不要になる
-- Githubとの親和性高い
-- ドキュメントが豊富で調査しやすい
+#NAME?
+#NAME?
+#NAME?
 
 #### - デメリット - <br>
-- コンテナにsshで入れないのでデバッグしにくい
+#NAME?
 - $129がかかるため、CIをはじめて導入する際には提案しにくい
-- Cloudなのでビルドの度にIPが変わる
+#NAME?
 
 ### CircleCI
 ![image](https://user-images.githubusercontent.com/66664167/92107539-ecf40280-ee20-11ea-8651-7261697f7995.png)
 #### - メリット - <br>
-- Cloudであるため、サーバの管理・運用は不要
-- 公式のサポートが手厚い
-- ドキュメントが豊富で調査しやすい
-- sshでコンテナに入れるので、デバッグしやすい
-- 無料で使い始められる
+#NAME?
+#NAME?
+#NAME?
+#NAME?
+#NAME?
 
 #### - デメリット - <br>
-- Clouldなのでビルドの度に毎回IPが変わる
-- GitHubまたはBitbucketとの連携が前提
+#NAME?
+#NAME?
 <br>
 <br>
 
@@ -90,11 +90,11 @@ CI/CDとは高度な継続的自動化と継続的監視をアプリケーショ
 ### 2.今日のゴール
 ### 3.環境・言語
 ### 4.事前準備
-- AWS アカウント作成
+#NAME?
 - AWS EC2インスタンの起動、Elastic IPの設定　[設定方法はこちら](https://github.com/miracleave-ltd/aws_ec2)
-- Docker　インストール
-- docker-compose インストール
-- GitHub アカウント作成
+#NAME?
+#NAME?
+#NAME?
 
 ## .やってみよう！
 
@@ -148,19 +148,49 @@ Laravelのライブラリパッケージ等をdockerコンテナ内にインス�
 #### 2-3 インストールする
 > $ cd my-laravel-app && composer install && cp ../docker/laravel/.env .env && chmod 777 -R storage/ && php artisan key:generate && php artisan config:cache && php artisan migrate 
 <br>
-> // コンテナを抜ける 
-<br>
-> $ exit 
+
+> // コンテナを抜ける <br> $ exit 
 
 #### 2-4 再起動する 
 > $ docker-compose down && docker-compose up
 
 
 #### 2-5 ローカル上でアプリの起動を確認する
-> http://localhost:8989 にアクセスする
+http://localhost:8989 にアクセスする
+
+### 3.EC2の設定
+
+--------------上野くん----------------
+
+
+### 4 CircleCIの設定
+#### 4-1 ログインする
+https://circleci.com/ja/vcs-authorize/
+
+![image](https://user-images.githubusercontent.com/66664167/92234453-095d7100-eeed-11ea-8730-beb61574538a.png)
+
+
+#### 4-2 該当プロジェクトの設定をする
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 CI/CD パイプラインのさまざまなテストおよびリリースステージに合わせて自動化されたテストを作成する必要があるため、まとまった事前の投資も必要です。
-
-
