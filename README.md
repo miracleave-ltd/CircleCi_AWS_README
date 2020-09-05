@@ -180,17 +180,15 @@ https://circleci.com/ja/vcs-authorize/
 ##### 4-2-3 「Start Building」ボタンを押下する
 ![image](https://user-images.githubusercontent.com/66664167/92300523-7aa52e80-ef96-11ea-8856-8511d7febf14.png)
 
+#### 4-3 EC2インスタンスと関連付ける
 テストが開始される（各種設定前なのでFAILDになるが問題ありません）
-##### 4-2-4 「Project Setting」ボタンを押下する
+##### 4-3-1 「Project Setting」ボタンを押下する
 ![image](https://user-images.githubusercontent.com/66664167/92300761-7417b680-ef98-11ea-9a75-a0ae99371953.png)
 
-##### 4-2-5 メニューの「SSH Keys」ボタンを押下する
+##### 4-3-2 メニューの「SSH Keys」ボタンを押下する
 ![image](https://user-images.githubusercontent.com/66664167/92300833-16379e80-ef99-11ea-87de-99bc615f8c53.png)
 
-##### 4-2-6 ページ下部の「Add SSH Keys」ボタンを押下する
-![image](https://user-images.githubusercontent.com/66664167/92301125-d58d5480-ef9b-11ea-9f27-ee3ce9b92fdc.png)
-
-##### 4-2-7 ターミナルを開き、EC2インスタンスにログインして、SSH Keyをコピーする
+##### 4-3-3 ターミナルを開き、EC2インスタンスにログインして、SSH Keyをコピーする
 
 > // EC2にログイン<br>
 > $ ssh -i ~/.ssh/[pem key名] [ユーザー名]@[IP]<br>
@@ -198,10 +196,20 @@ https://circleci.com/ja/vcs-authorize/
 > // SSH Keyが表示される<br>
 > $ cat ~/.ssh/id_rsa
 
-コピー
+コピーする
 ![image](https://user-images.githubusercontent.com/66664167/92301975-2d7b8980-efa3-11ea-9ab9-461ff58fa09b.png)
 
 
+##### 4-3-4 ページ下部の「Add SSH Keys」ボタンを押下すし、IPアドレスとコピーしたKeyを入力する
+![image](https://user-images.githubusercontent.com/66664167/92301125-d58d5480-ef9b-11ea-9f27-ee3ce9b92fdc.png)
+![image](https://user-images.githubusercontent.com/66664167/92302429-23f42080-efa7-11ea-8730-1d28548e33ef.png)
+
+
+#### 4-4 環境変数を設定する
+##### 4-4-1 メニューの「Organization Settings」ボタンを押下する
+![image](https://user-images.githubusercontent.com/66664167/92302693-0d4ec900-efa9-11ea-9f7f-e80315837035.png)
+
+##### 4-4-2 
 
 
 
