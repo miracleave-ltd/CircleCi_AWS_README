@@ -212,10 +212,27 @@ https://circleci.com/ja/vcs-authorize/
 ##### 4-4-2 メニューの「Contexts」を選択（初期画面）し、「Create Context」を押下する
 ![image](https://user-images.githubusercontent.com/66664167/92478693-7f2f4880-f21d-11ea-8415-d0338347fc9f.png)
 
-##### 4-4-3 「Context Name」に任意の名前を入力する（例：meet-up）
+##### 4-4-3 「Context Name」に任意の名前を入力し、「Create Context」を押下する（例：meet-up）
 ![image](https://user-images.githubusercontent.com/66664167/92479021-f95fcd00-f21d-11ea-9058-81509b3171a5.png)
 
+##### 4-4-4 前画面に戻るので、入力した名前があるか確認し、該当のNameを押下する
+![image](https://user-images.githubusercontent.com/66664167/92479460-87d44e80-f21e-11ea-947a-5a8ed7b8e1f9.png)
 
+##### 4-4-5 「Add Environment Variables」を押下する
+![image](https://user-images.githubusercontent.com/66664167/92479794-f6191100-f21e-11ea-8d4a-ade01ec2fd12.png)
+
+##### 4-4-6 「Environment Variable Name」と「Value」にそれぞれ下記の通り入力し、 「Add Environment Variables」を押下する
+
+① Environment Variable Name: USER_NAME
+　 Value: EC2インスタンスのユーザー名（例：ec2-user）
+  
+② Environment Variable Name: HOST_NAME
+　 Value: EC2インスタンスのIPアドレス
+
+![image](https://user-images.githubusercontent.com/66664167/92480545-01b90780-f220-11ea-9379-feb90dc1c7c3.png)
+
+###### 入力後の画面にてそれぞれName,Valueが入っていることを確認する
+![image](https://user-images.githubusercontent.com/66664167/92481230-0205d280-f221-11ea-8325-9c25d2ba924f.png)
 
 
 
