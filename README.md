@@ -204,6 +204,9 @@ https://circleci.com/ja/vcs-authorize/
 ![image](https://user-images.githubusercontent.com/66664167/92301125-d58d5480-ef9b-11ea-9f27-ee3ce9b92fdc.png)
 ![image](https://user-images.githubusercontent.com/66664167/92302429-23f42080-efa7-11ea-8730-1d28548e33ef.png)
 
+##### 入力した内容が表示されていることを確認する（Keyは変換されて表示されているため、実際の入力した内容と表示は異なります）
+![image](https://user-images.githubusercontent.com/66664167/92482470-9de40e00-f222-11ea-8bcb-78bb6130ccd5.png)
+
 
 #### 4-4 環境変数を設定する
 ##### 4-4-1 メニューの「Organization Settings」ボタンを押下する
@@ -223,10 +226,10 @@ https://circleci.com/ja/vcs-authorize/
 
 ##### 4-4-6 「Environment Variable Name」と「Value」にそれぞれ下記の通り入力し、 「Add Environment Variables」を押下する
 
-① Environment Variable Name: USER_NAME
+① Environment Variable Name: USER_NAME<br>
 　 Value: EC2インスタンスのユーザー名（例：ec2-user）
   
-② Environment Variable Name: HOST_NAME
+② Environment Variable Name: HOST_NAME<br>
 　 Value: EC2インスタンスのIPアドレス
 
 ![image](https://user-images.githubusercontent.com/66664167/92480545-01b90780-f220-11ea-9379-feb90dc1c7c3.png)
