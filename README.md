@@ -238,13 +238,15 @@ https://circleci.com/ja/vcs-authorize/
 ![image](https://user-images.githubusercontent.com/66664167/92481230-0205d280-f221-11ea-8325-9c25d2ba924f.png)
 
 <br>
+
 #### 設定完了！お疲れ様でした！
 #### ここからいよいよCI/CD体験をしていきましょう！
+
 <br>
 
-#### 5 ローカルで変更を加えてCI/CDの動作を確認する
+### 5 ローカルで変更を加えてCI/CDの動作を確認する
 
-##### 5-1 ローカルのクライアントソースで任意の場所を変更し、リポジトリにpushする。
+#### 5-1 ローカルのクライアントソースで任意の場所を変更し、リポジトリにpushする。
 
 ##### 例：　ヘッダーのボタンをそれぞれ「登録」「一覧」から「登録ボタン」「一覧ボタン」に変更する。
 ##### Before
@@ -256,18 +258,44 @@ https://circleci.com/ja/vcs-authorize/
 
 ##### 5-1-1 ソース変更後、変更をリポジトリにpushする。
 
-// 変更後<br>
 > $ git add .<br>
-
-// 任意のメッセージ<br>
 > $ git commit -m "fix"<br>
-
-// リポジトリへのプッシュ<br>
-> $ git push <br>          
+> $ git push
  
+##### 5-1-2 CircleCIを確認する
+
+「Running」状態になっている
+![image](https://user-images.githubusercontent.com/66664167/92486011-94f53b80-f226-11ea-901c-332e524ab23a.png)
+
+時間が経つと「Success」になる
+![image](https://user-images.githubusercontent.com/66664167/92486333-ed2c3d80-f226-11ea-88da-f35f6aabad27.png)
 
 
+##### 5-1-3 CircleCIで「Success」後、ブラウザで確認する。
+変更が反映されている！
+![image](https://user-images.githubusercontent.com/66664167/92484786-0df39380-f225-11ea-9a7f-6a22c5627b00.png)
 
+
+#### 5-2 テストが失敗した状態を体験する
+##### 5-2-1 テストコードをテストが失敗するように編集する(例：あるURLにgetリクエストした際のレスポンススタッツで200が返ってくる想定の箇所で、500を設定する）
+
+![image](https://user-images.githubusercontent.com/66664167/92488026-ff0ee000-f228-11ea-82b1-219101bdc322.png)
+
+
+##### 5-2-2 ソース変更後、変更をリポジトリにpushする。
+
+> $ git add .<br>
+> $ git commit -m "fix"<br>
+> $ git push
+
+
+##### 5-2-3 CircleCIを確認する
+
+「Faild」になる
+![image](https://user-images.githubusercontent.com/66664167/92488378-6f1d6600-f229-11ea-94be-b955b8ced24e.png)
+
+##### 5-2-4 「Faild」→「失敗箇所（今回は「build」）」を押下して、ログを確認する
+![image](https://user-images.githubusercontent.com/66664167/92490179-a9880280-f22b-11ea-9328-d6d81766cfa6.png)
 
 
 
