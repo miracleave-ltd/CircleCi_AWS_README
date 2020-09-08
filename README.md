@@ -47,45 +47,44 @@ CI/CDとは高度な継続的自動化と継続的監視をアプリケーショ
 ## CI/CDツール選定
 ### Jenkins
 ![image](https://user-images.githubusercontent.com/66664167/92107197-5a536380-ee20-11ea-95b5-6488c0ecb79f.png)
-#### - メリット - <br>
-#NAME?
-#NAME?
-#NAME?
+#### メリット
+- 拡張性が高い。プロジェクトに合わせてカスタマイズしやすい
+- オンプレ上に構築するため、IPが固定される
+- ドキュメントが豊富で調査しやすい
+#### デメリット
+サーバを用意する必要があるため、費用がかかる、準備に時間がかかる
+本番を含めワークフローに組み込むため、導入は計画的に行う必要がある
+保守・運用が必要なため管理を怠ると属人化しやすい
 
-#### - デメリット - <br>
-#NAME?
-#NAME?
-#NAME?
 
 ### TravisCI
 ![image](https://user-images.githubusercontent.com/66664167/92107394-a9999400-ee20-11ea-80af-30f183fb4802.png)
-#### - メリット - <br>
-#NAME?
-#NAME?
-#NAME?
+#### メリット
+- Cloudであるため、サーバの管理・運用は不要になる
+- Githubとの親和性高い
+- ドキュメントが豊富で調査しやすい
 
-#### - デメリット - <br>
-#NAME?
+#### デメリット
+- コンテナにsshで入れないのでデバッグしにくい
 - $129がかかるため、CIをはじめて導入する際には提案しにくい
-#NAME?
+- Cloudなのでビルドの度にIPが変わる
+
 
 ### CircleCI
 ![image](https://user-images.githubusercontent.com/66664167/92107539-ecf40280-ee20-11ea-8651-7261697f7995.png)
-#### - メリット - <br>
-#NAME?
-#NAME?
-#NAME?
-#NAME?
-#NAME?
 
-#### - デメリット - <br>
-#NAME?
-#NAME?
-<br>
-<br>
+#### メリット
+- Cloudであるため、サーバの管理・運用は不要
+- 公式のサポートが手厚い
+- ドキュメントが豊富で調査しやすい
+- sshでコンテナに入れるので、デバッグしやすい
+- 無料で使い始められる
+#### デメリット
+- Clouldなのでビルドの度に毎回IPが変わる
+- GitHubまたはBitbucketとの連携が前提
+
 
 ## ★　今日やること　★
-
 ### 1.目的
 ------------------------------------整える-----------------------------------------
 ![image](https://user-images.githubusercontent.com/66664167/92490881-8447c400-f22c-11ea-9e32-5fdcdd313832.png)
@@ -99,11 +98,12 @@ CI/CDとは高度な継続的自動化と継続的監視をアプリケーショ
 
 
 ### 4.事前準備
-#NAME?
+- AWS アカウント作成
 - AWS EC2インスタンの起動、Elastic IPの設定　[設定方法はこちら](https://github.com/miracleave-ltd/aws_ec2)
-#NAME?
-#NAME?
-#NAME?
+- Docker　インストール
+- docker-compose インストール
+- GitHub アカウント作成
+
 
 ## .やってみよう！
 
