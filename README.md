@@ -237,10 +237,30 @@ https://circleci.com/ja/vcs-authorize/
 ###### 入力後の画面にてそれぞれName,Valueが入っていることを確認する
 ![image](https://user-images.githubusercontent.com/66664167/92481230-0205d280-f221-11ea-8325-9c25d2ba924f.png)
 
+<br>
+#### 設定完了！お疲れ様でした！
+#### ここからいよいよCI/CD体験をしていきましょう！
+<br>
+
+#### 5 ローカルで変更を加えてCI/CDの動作を確認する
+
+##### 5-1 ローカルのクライアントソースで任意の場所を変更し、リポジトリにpushする。
+
+##### 例：　ヘッダーのボタンをそれぞれ「登録」「一覧」から「登録ボタン」「一覧ボタン」に変更する。
+##### Before
+![image](https://user-images.githubusercontent.com/66664167/92484565-ccfb7f00-f224-11ea-9d07-dc6482b7fc82.png)
+
+##### After
+![image](https://user-images.githubusercontent.com/66664167/92484786-0df39380-f225-11ea-9a7f-6a22c5627b00.png)
 
 
+##### 5-1-1 ソース変更後、変更をリポジトリにpushする。
 
-
+> //変更後<br>
+> $ git add .<br>
+> $ git commit -m "fix" //任意のメッセージ<br>
+> $ git push            //リポジトリへのプッシュ <br>
+ 
 
 
 
