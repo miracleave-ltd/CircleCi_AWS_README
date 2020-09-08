@@ -256,10 +256,14 @@ https://circleci.com/ja/vcs-authorize/
 
 ##### 5-1-1 ソース変更後、変更をリポジトリにpushする。
 
-> //変更後<br>
+// 変更後<br>
 > $ git add .<br>
-> $ git commit -m "fix" //任意のメッセージ<br>
-> $ git push            //リポジトリへのプッシュ <br>
+
+// 任意のメッセージ<br>
+> $ git commit -m "fix"<br>
+
+// リポジトリへのプッシュ<br>
+> $ git push <br>          
  
 
 
