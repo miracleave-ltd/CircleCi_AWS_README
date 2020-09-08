@@ -209,8 +209,11 @@ https://circleci.com/ja/vcs-authorize/
 ##### 4-4-1 メニューの「Organization Settings」ボタンを押下する
 ![image](https://user-images.githubusercontent.com/66664167/92302693-0d4ec900-efa9-11ea-9f7f-e80315837035.png)
 
-##### 4-4-2 
+##### 4-4-2 メニューの「Contexts」を選択（初期画面）し、「Create Context」を押下する
+![image](https://user-images.githubusercontent.com/66664167/92478693-7f2f4880-f21d-11ea-8415-d0338347fc9f.png)
 
+##### 4-4-3 「Context Name」に任意の名前を入力する（例：meet-up）
+![image](https://user-images.githubusercontent.com/66664167/92479021-f95fcd00-f21d-11ea-9058-81509b3171a5.png)
 
 
 
