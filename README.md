@@ -171,6 +171,18 @@ http://localhost:8989 にアクセスする
 #### 3-1 EC2の設定をする
 (https://github.com/miracleave-ltd/aws_ec2)
 ##### ※「インスタンスの詳細を設定する」という画面で【ユーザーデータ】という項目があるので、そこに下記のファイルの内容を設定する
+> #!/bin/bash
+> # Dockerをインストール
+> sudo yum update -y
+> sudo yum install -y docker
+> sudo service docker start
+> sudo chkconfig docker on
+> sudo usermod -a -G docker ec2-user
+> # docker-composeをインストール
+> sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+> sudo chmod +x /usr/local/bin/docker-compose
+> # gitインストール
+> sudo yum install -y git
 
 #### 3-2 EC２に接続する
 > // EC2にログイン<br>
@@ -179,6 +191,19 @@ http://localhost:8989 にアクセスする
 #### 3-3 リポジトリをcloneする
 > // EC2にログイン<br>
 > $ git clone https://github.com/{ユーザー名}/{リポジトリ}.git<br>
+
+#### 3-4 コンテナを立ち上げる
+> $ cd my-favarite-books<br>
+> $ docker-compose up -d<br>
+
+#### 3-5 コンテナ中に入り、Laravelに関する設定する
+> $ docker-compose exec app bash
+> $ cd my-laravel-app && composer install && cp ../docker/laravel/.env .env && chmod 777 -R storage/ && php artisan key:generate && php artisan config:cache && php artisan migrate
+
+#### 3-6 コンテナを抜け、再起動する
+> $ exit
+> $ docker-compose restart
+
 
 --------------上野くん----------------
 
