@@ -105,7 +105,7 @@ CI/CDとは高度な継続的自動化と継続的監視をアプリケーショ
 ### 4.事前準備
 - AWS アカウント作成
 - AWS EC2インスタンの起動　[設定方法はこちら](https://github.com/miracleave-ltd/aws_ec2)
-- git インストール
+- Git インストール
 - Docker　インストール
 - docker-compose インストール
 - GitHub アカウント作成
@@ -123,7 +123,6 @@ CI/CDとは高度な継続的自動化と継続的監視をアプリケーショ
 ##### 「ユーザー名/meet-up_CI-CD」になっていることを確認する。（自分のリポジトリとして管理できる状態になる）
 ![image](https://user-images.githubusercontent.com/66664167/92986668-8b562700-f4f7-11ea-9a81-80b527403d6d.png)
 
-
 #### 1-3 ローカルの任意の場所にクローンする
 ※ターミナル（コマンドプロンプト)を使用します。
 
@@ -139,64 +138,89 @@ $ cd ~/Desktop
 $ git clone https://github.com/[ユーザー名]/[リポジトリ名].git
 ```
 
+※以降、こちらの手順書ではDesktopにリポジトリがある想定でコマンドのパスを表記します
+
+
 ### 2. 初期設定
 Laravelのライブラリパッケージ等をdockerコンテナ内にインストールする
 
 #### 2-1 コンテナを立ち上げる
-> $ docker-compose up -d
+```
+~/Desktop/meet-up_CI-CD$ docker-compose up -d
+```
 
 #### 2-2 dockerコンテナに入る
-> $ docker-compose exec app bash
+```
+~/Desktop/meet-up_CI-CD$ docker-compose exec app bash
+```
 
-#### 2-3 インストールする
-> $ cd my-laravel-app && composer install && cp ../docker/laravel/.env .env && chmod 777 -R storage/ && php artisan key:generate && php artisan config:cache && php artisan migrate 
-<br>
+#### 2-3 アプリの実行に必要なインストール・設定をする
+```
+~/Desktop/meet-up_CI-CD$ cd my-laravel-app && composer install && cp ../docker/laravel/.env .env && chmod 777 -R storage/ && php artisan key:generate && php artisan config:cache && php artisan migrate 
+```
 
-> // コンテナを抜ける <br> $ exit 
+#### 2-4 コンテナを抜ける
+```
+~/Desktop/meet-up_CI-CD$ exit 
+```
 
-#### 2-4 再起動する 
-> $ docker-compose down && docker-compose up
+#### 2-5 コンテナを再起動する 
+```
+~/Desktop/meet-up_CI-CD$ docker-compose down && docker-compose up
+```
+
 
 ### 3.EC2の設定
 #### 3-1 EC2の設定をする
 (https://github.com/miracleave-ltd/aws_ec2)
 ##### ※「インスタンスの詳細を設定する」という画面で【ユーザーデータ】という項目があるので、そこに下記のファイルの内容を設定する
-> #!/bin/bash
-> # Dockerをインストール
-> sudo yum update -y
-> sudo yum install -y docker
-> sudo service docker start
-> sudo chkconfig docker on
-> sudo usermod -a -G docker ec2-user
-> # docker-composeをインストール
-> sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-> sudo chmod +x /usr/local/bin/docker-compose
-> # gitインストール
-> sudo yum install -y git
+```
+#!/bin/bash
+# Dockerをインストール
+sudo yum update -y
+sudo yum install -y docker
+sudo service docker start
+sudo chkconfig docker on
+sudo usermod -a -G docker ec2-user
+# docker-composeをインストール
+sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+# gitインストール
+sudo yum install -y git
+```
 
 #### 3-2 EC２に接続する
-> // EC2にログイン<br>
-> $ ssh -i ~/.ssh/[pem key名] [ユーザー名]@[IP]<br>
+```
+// EC2にログイン
+$ ssh -i ~/.ssh/[pem key名] [ユーザー名]@[IP]<br>
+```
 
 #### 3-3 リポジトリをcloneする
-> // EC2にログイン<br>
-> $ git clone https://github.com/{ユーザー名}/{リポジトリ}.git<br>
+```
+// EC2インスタンス内で実行
+$ git clone https://github.com/{ユーザー名}/{リポジトリ}.git
+```
 
 #### 3-4 コンテナを立ち上げる
-> $ cd my-favarite-books<br>
-> $ docker-compose up -d<br>
+```
+// EC2インスタンス内で実行
+$ cd meet-up_CI-CD<br>
+$ docker-compose up -d<br>
+```
 
-#### 3-5 コンテナ中に入り、Laravelに関する設定する
-> $ docker-compose exec app bash
-> $ cd my-laravel-app && composer install && cp ../docker/laravel/.env .env && chmod 777 -R storage/ && php artisan key:generate && php artisan config:cache && php artisan migrate
+#### 3-5 アプリの実行に必要なインストール・設定をする
+```
+// EC2インスタンス内で実行
+$ docker-compose exec app bash
+$ cd my-laravel-app && composer install && cp ../docker/laravel/.env .env && chmod 777 -R storage/ && php artisan key:generate && php artisan config:cache && php artisan migrate
+```
 
 #### 3-6 コンテナを抜け、再起動する
-> $ exit
-> $ docker-compose restart
-
-
---------------上野くん----------------
-
+```
+// EC2インスタンス内で実行
+$ exit
+$ docker-compose restart
+```
 
 ### 4 CircleCIの設定
 #### 4-1 ログインする
