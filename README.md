@@ -1,5 +1,8 @@
 # CircleCI ✖︎ AWSでCI/CDを体験しよう！！
 
+![image](https://user-images.githubusercontent.com/66664167/92107539-ecf40280-ee20-11ea-8651-7261697f7995.png)
+
+
 ## はじめに
 ### CI/CDとは
 
@@ -109,10 +112,15 @@ CI/CDとは高度な継続的自動化と継続的監視をアプリケーショ
 
 ### 1. リポジトリを作成
 #### 1-1 GitHubにアクセスする
-[こちらから該当ファイルを取得する](https://github.com/miracleave-ltd/meet-up_CI-CD)
+[こちらからリポジトリにアクセス](https://github.com/miracleave-ltd/meet-up_CI-CD)
 
-#### 1-2 ZIPファイルをダウンロードする
-![image](https://user-images.githubusercontent.com/66664167/92227895-f3967e80-eee1-11ea-9584-617df0e14f53.png)
+#### 1-2 FORKする
+![image](https://user-images.githubusercontent.com/66664167/92986631-54801100-f4f7-11ea-94f1-bc27cf0c8d77.png)
+
+##### 「ユーザー名/meet-up_CI-CD」になっていることを確認する。（自分のリポジトリとして管理できる状態になる）
+![image](https://user-images.githubusercontent.com/66664167/92986668-8b562700-f4f7-11ea-9a81-80b527403d6d.png)
+
+
 
 #### 1-3 ローカルにディレクトリを作り、ダウンロードしたファイルを格納する
 ターミナルを使用します。
@@ -171,17 +179,17 @@ http://localhost:8989 にアクセスする
 #### 3-1 EC2の設定をする
 (https://github.com/miracleave-ltd/aws_ec2)
 ##### ※「インスタンスの詳細を設定する」という画面で【ユーザーデータ】という項目があるので、そこに下記のファイルの内容を設定する
-> // #!/bin/bash
-> // #Dockerをインストール
+> #!/bin/bash
+> # Dockerをインストール
 > sudo yum update -y
 > sudo yum install -y docker
 > sudo service docker start
 > sudo chkconfig docker on
 > sudo usermod -a -G docker ec2-user
-> // #docker-composeをインストール
+> # docker-composeをインストール
 > sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 > sudo chmod +x /usr/local/bin/docker-compose
-> // #gitインストール
+> # gitインストール
 > sudo yum install -y git
 
 #### 3-2 EC２に接続する
@@ -197,34 +205,12 @@ http://localhost:8989 にアクセスする
 > $ docker-compose up -d<br>
 
 #### 3-5 コンテナ中に入り、Laravelに関する設定する
-> $ docker-compose exec app bash<br>
-> $ cd my-laravel-app && composer install && cp ../docker/laravel/.env .env && chmod 777 -R storage/ && php artisan key:generate && php artisan config:cache && php artisan migrate<br>
+> $ docker-compose exec app bash
+> $ cd my-laravel-app && composer install && cp ../docker/laravel/.env .env && chmod 777 -R storage/ && php artisan key:generate && php artisan config:cache && php artisan migrate
 
 #### 3-6 コンテナを抜け、再起動する
-> $ exit<br>
-> $ docker-compose restart<br>
-
-#### 3-7 アプリが見えるか確認
-> http://{EC2のIPアドレス}<br>
-
-#### 3-8　秘密鍵・公開鍵を設定
-> // EC2のルートディレクトリで.sshフォルダに移動<br>
-> $ cd ~/.ssh<br>
-##### ※.ssh ディレクトリがない場合は mkdir -p ~/.ssh で作成
- 
-> // id_rsa.pub と id_rsa が存在していないか確認<br>
-? $ ls<br>
-
-> // 秘密鍵・公開鍵の作成を行う<br>
-> $ssh-keygen -m pem<br>
-##### ※色々と英語で聞かれますが、何も入力せず Enter 連打で OK
-
-> // 公開鍵を表示して、文字列をコピー<br>
-> $ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys<br>
-
-> // 秘密鍵をコピーして、メモ帳などにメモしておく<br>
-> $ cat ~/.ssh/id_rsa<br>
-
+> $ exit
+> $ docker-compose restart
 
 
 --------------上野くん----------------
