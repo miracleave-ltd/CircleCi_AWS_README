@@ -1,8 +1,5 @@
 # CircleCI ✖︎ AWSでCI/CDを体験しよう！！
 
-![image](https://user-images.githubusercontent.com/66664167/92107539-ecf40280-ee20-11ea-8651-7261697f7995.png)
-
-
 ## はじめに
 ### CI/CDとは
 
@@ -54,7 +51,6 @@ CI/CDとは高度な継続的自動化と継続的監視をアプリケーショ
 - 拡張性が高い。プロジェクトに合わせてカスタマイズしやすい
 - オンプレ上に構築するため、IPが固定される
 - ドキュメントが豊富で調査しやすい
-
 #### デメリット
 サーバを用意する必要があるため、費用がかかる、準備に時間がかかる
 本番を含めワークフローに組み込むため、導入は計画的に行う必要がある
@@ -83,7 +79,6 @@ CI/CDとは高度な継続的自動化と継続的監視をアプリケーショ
 - ドキュメントが豊富で調査しやすい
 - sshでコンテナに入れるので、デバッグしやすい
 - 無料で使い始められる
-
 #### デメリット
 - Clouldなのでビルドの度に毎回IPが変わる
 - GitHubまたはBitbucketとの連携が前提
@@ -104,8 +99,7 @@ CI/CDとは高度な継続的自動化と継続的監視をアプリケーショ
 
 ### 4.事前準備
 - AWS アカウント作成
-- AWS EC2インスタンの起動　[設定方法はこちら](https://github.com/miracleave-ltd/aws_ec2)
-- Git インストール
+- AWS EC2インスタンの起動、Elastic IPの設定　[設定方法はこちら](https://github.com/miracleave-ltd/aws_ec2)
 - Docker　インストール
 - docker-compose インストール
 - GitHub アカウント作成
@@ -115,112 +109,122 @@ CI/CDとは高度な継続的自動化と継続的監視をアプリケーショ
 
 ### 1. リポジトリを作成
 #### 1-1 GitHubにアクセスする
-[こちらからリポジトリにアクセス](https://github.com/miracleave-ltd/meet-up_CI-CD)
+[こちらから該当ファイルを取得する](https://github.com/miracleave-ltd/meet-up_CI-CD)
 
-#### 1-2 FORKする
-![image](https://user-images.githubusercontent.com/66664167/92986631-54801100-f4f7-11ea-94f1-bc27cf0c8d77.png)
+#### 1-2 ZIPファイルをダウンロードする
+![image](https://user-images.githubusercontent.com/66664167/92227895-f3967e80-eee1-11ea-9584-617df0e14f53.png)
 
-##### 「ユーザー名/meet-up_CI-CD」になっていることを確認する。（自分のリポジトリとして管理できる状態になる）
-![image](https://user-images.githubusercontent.com/66664167/92986668-8b562700-f4f7-11ea-9a81-80b527403d6d.png)
+#### 1-3 ローカルにディレクトリを作り、ダウンロードしたファイルを格納する
+ターミナルを使用します。
 
-#### 1-3 ローカルの任意の場所にクローンする
-※ターミナル（コマンドプロンプト)を使用します。
+> // ディレクトリ作成(任意の場所を指定して作成してください）<br>
+> $ mkdir [ファイルの格納場所のパス]/[ディレクトリ名]<br>
+> 例：$ mkdir mkdir ~/projects/myapp
 
-##### 1-3-1 「Code」ボタンを押下して、リポジトリのURLをコピーする
-![image](https://user-images.githubusercontent.com/66664167/92986964-6e225800-f4f9-11ea-9dbb-5daae9c512dd.png)
+#### 1-4 自分のGitHubにリポジトリを作成する
+GitHubにログインして「New」ボタンを押下する
+![image](https://user-images.githubusercontent.com/66664167/92230424-0f038880-eee6-11ea-967b-de06bb69fd20.png)
 
-##### 1-3-2 ターミナルを使用して、任意の場所にクローンする
+「Repository name」を入力、「Public」にチェック（初期値）、「Create repository」ボタン押下し作成する
+（今回はmy-favarite-bookで設定)
+![image](https://user-images.githubusercontent.com/66664167/92229246-20e42c00-eee4-11ea-8da7-aa408c91ee17.png)
 
-```
-例：デスクトップに作成する場合
-$ cd ~/Desktop
-// 先ほどコピーしたURLを貼り付けて実行する
-$ git clone https://github.com/[ユーザー名]/[リポジトリ名].git
-```
+リポジトリ作成後画面
+![image](https://user-images.githubusercontent.com/66664167/92230877-c6989a80-eee6-11ea-942a-76feac5c08ad.png)
 
-※以降、こちらの手順書ではDesktopにリポジトリがある想定でコマンドのパスを表記します
+
+#### 1-5 ローカルの該当ソースをリポジトリに反映する
+> $ git init <br>
+> $ git add .<br>
+> $ git commit -m "init" <br>
+> $ git branch -M master <br>
+> $ git remote add origin https://github.com/[ユーザー名]/[リポジトリ名].git <br>
+> $ git push -u origin master <br>
+
+リポジトリ反映後画面
+![image](https://user-images.githubusercontent.com/66664167/92231621-07dd7a00-eee8-11ea-826a-235b83254d4b.png)
 
 
 ### 2. 初期設定
 Laravelのライブラリパッケージ等をdockerコンテナ内にインストールする
 
 #### 2-1 コンテナを立ち上げる
-```
-~/Desktop/meet-up_CI-CD$ docker-compose up -d
-```
+> $ docker-compose up -d
 
 #### 2-2 dockerコンテナに入る
-```
-~/Desktop/meet-up_CI-CD$ docker-compose exec app bash
-```
+> $ docker-compose exec app bash
 
-#### 2-3 アプリの実行に必要なインストール・設定をする
-```
-~/Desktop/meet-up_CI-CD$ cd my-laravel-app && composer install && cp ../docker/laravel/.env .env && chmod 777 -R storage/ && php artisan key:generate && php artisan config:cache && php artisan migrate 
-```
+#### 2-3 インストールする
+> $ cd my-laravel-app && composer install && cp ../docker/laravel/.env .env && chmod 777 -R storage/ && php artisan key:generate && php artisan config:cache && php artisan migrate 
+<br>
 
-#### 2-4 コンテナを抜ける
-```
-~/Desktop/meet-up_CI-CD$ exit 
-```
+> // コンテナを抜ける <br> $ exit 
 
-#### 2-5 コンテナを再起動する 
-```
-~/Desktop/meet-up_CI-CD$ docker-compose down && docker-compose up
-```
+#### 2-4 再起動する 
+> $ docker-compose down && docker-compose up
 
+
+#### 2-5 ローカル上でアプリの起動を確認する
+http://localhost:8989 にアクセスする
 
 ### 3.EC2の設定
 #### 3-1 EC2の設定をする
 (https://github.com/miracleave-ltd/aws_ec2)
 ##### ※「インスタンスの詳細を設定する」という画面で【ユーザーデータ】という項目があるので、そこに下記のファイルの内容を設定する
-```
-#!/bin/bash
-# Dockerをインストール
-sudo yum update -y
-sudo yum install -y docker
-sudo service docker start
-sudo chkconfig docker on
-sudo usermod -a -G docker ec2-user
-# docker-composeをインストール
-sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-# gitインストール
-sudo yum install -y git
-```
+> \#!/bin/bash<br>
+> \# Dockerをインストール<br>
+> sudo yum update -y<br>
+> sudo yum install -y docker<br>
+> sudo service docker start<br>
+> sudo chkconfig docker on<br>
+> sudo usermod -a -G docker ec2-user<br>
+> \# docker-composeをインストール<br>
+> sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose<br>
+> sudo chmod +x /usr/local/bin/docker-compose<br>
+> \# gitインストール<br>
+> sudo yum install -y git<br>
 
 #### 3-2 EC２に接続する
-```
-// EC2にログイン
-$ ssh -i ~/.ssh/[pem key名] [ユーザー名]@[IP]<br>
-```
+##### Macの方
+> // EC2にログイン<br>
+> ~/Desktop/meet-up_CI-CD $ ssh -i ~/.ssh/{pem key名} {ユーザー名}@{IP}<br>
+
+##### Windowsの方(tera term)
+1. tera termを開き、新しい接続という画面にホスト(T)とあるので、そこにEC2のIPアドレスを設定する
+2. セキュリティ警告の画面がでた場合、[このホストをknown hostsリストに追加する]という項目のチェックを外し、続行ボタンを押す
+3. SSH認証画面が表示されたら、ユーザー名の欄に「ec2-user」を設定し、AWSからダウンロードしてきた秘密鍵を設定する
+4. OKボタンを押すとEC2インスタンスにSSH接続できる
 
 #### 3-3 リポジトリをcloneする
-```
-// EC2インスタンス内で実行
-$ git clone https://github.com/{ユーザー名}/{リポジトリ}.git
-```
+> // EC2にログイン<br>
+> [ec2-user@ip-{プライベートIP} ~]$ git clone https://github.com/{ユーザー名}/{リポジトリ}.git<br>
 
 #### 3-4 コンテナを立ち上げる
-```
-// EC2インスタンス内で実行
-$ cd meet-up_CI-CD<br>
-$ docker-compose up -d<br>
-```
+> [ec2-user@ip-{プライベートIP} ~]$ cd {リポジトリ名}<br>
+> [ec2-user@ip-{プライベートIP} ~ {リポジトリ名}]$ docker-compose up -d<br>
 
-#### 3-5 アプリの実行に必要なインストール・設定をする
-```
-// EC2インスタンス内で実行
-$ docker-compose exec app bash
-$ cd my-laravel-app && composer install && cp ../docker/laravel/.env .env && chmod 777 -R storage/ && php artisan key:generate && php artisan config:cache && php artisan migrate
-```
+#### 3-5 コンテナ中に入り、Laravelに関する設定する
+> [ec2-user@ip-{プライベートIP} ~ {リポジトリ名}]$ docker-compose exec app bash<br>
+> root@{コンテナID}:/var/www/html# cd my-laravel-app && composer install && cp ../docker/laravel/.env .env && chmod 777 -R storage/ && php artisan key:generate && php artisan config:cache && php artisan migrate<br>
 
 #### 3-6 コンテナを抜け、再起動する
-```
-// EC2インスタンス内で実行
-$ exit
-$ docker-compose restart
-```
+> root@{コンテナID}:/var/www/html# exit<br>
+> [ec2-user@ip-{プライベートIP} ~ {リポジトリ名}]$ docker-compose restart<br>
+
+#### 3-7 アプリが見えるか確認(ブラウザで確認)
+> http://{EC2のIPアドレス}<br>
+
+#### 3-8　秘密鍵・公開鍵を設定
+> // 秘密鍵・公開鍵の作成を行う<br>
+> [ec2-user@ip-{プライベートIP} ~]$ssh-keygen -m pem<br>
+##### ※色々と英語で聞かれますが、何も入力せず Enter 連打で OK
+
+> // 公開鍵をauthorized_keysに追記する<br>
+> [ec2-user@ip-{プライベートIP} ~]$ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys<br>
+
+> // 秘密鍵をコピーして、メモ帳などにメモしておく<br>
+> [ec2-user@ip-{プライベートIP} ~]$ cat ~/.ssh/id_rsa<br>
+
 
 ### 4 CircleCIの設定
 #### 4-1 ログインする
