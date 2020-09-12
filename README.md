@@ -181,24 +181,28 @@ root@06e2xxxxxx:/var/www/html# exit
 ##### ※「インスタンスの詳細を設定する」という画面で【ユーザーデータ】という項目があるので、そこに下記のファイルの内容を設定する
 
 ```
-\#!/bin/bash<br>
-\# Dockerをインストール<br>
-sudo yum update -y<br>
-sudo yum install -y docker<br>
-sudo service docker start<br>
-sudo chkconfig docker on<br>
-sudo usermod -a -G docker ec2-user<br>
-\# docker-composeをインストール<br>
-sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose<br>
-sudo chmod +x /usr/local/bin/docker-compose<br>
-\# gitインストール<br>
-sudo yum install -y git<br>
+\#!/bin/bash
+\# Dockerをインストール
+sudo yum update -y
+sudo yum install -y docker
+sudo service docker start
+sudo chkconfig docker on
+sudo usermod -a -G docker ec2-user
+\# docker-composeをインストール
+sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+\# gitインストール
+sudo yum install -y git
 ```
+![image](https://user-images.githubusercontent.com/66664167/92995757-3808c680-f541-11ea-9201-99b009bf15ef.png)
+
 
 #### 3-2 EC２に接続する
 ##### Macの方
-> // EC2にログイン<br>
-> ~/Desktop/meet-up_CI-CD $ ssh -i ~/.ssh/{pem key名} {ユーザー名}@{IP}<br>
+```
+// EC2にログイン
+~/Desktop/meet-up_CI-CD $ ssh -i ~/.ssh/{pem key名} {ユーザー名}@{IP}<br>
+```
 
 ##### Windowsの方(tera term)
 1. tera termを開き、新しい接続という画面にホスト(T)とあるので、そこにEC2のIPアドレスを設定する
@@ -207,35 +211,49 @@ sudo yum install -y git<br>
 4. OKボタンを押すとEC2インスタンスにSSH接続できる
 
 #### 3-3 リポジトリをcloneする
-> // EC2にログイン<br>
-> [ec2-user@ip-{プライベートIP} ~]$ git clone https://github.com/{ユーザー名}/{リポジトリ}.git<br>
+```
+// EC2にログイン
+[ec2-user@ip-{プライベートIP} ~]$ git clone https://github.com/{ユーザー名}/{リポジトリ}.git
+```
 
 #### 3-4 コンテナを立ち上げる
-> [ec2-user@ip-{プライベートIP} ~]$ cd {リポジトリ名}<br>
-> [ec2-user@ip-{プライベートIP} ~ {リポジトリ名}]$ docker-compose up -d<br>
+```
+[ec2-user@ip-{プライベートIP} ~]$ cd {リポジトリ名}
+[ec2-user@ip-{プライベートIP} ~ {リポジトリ名}]$ docker-compose up -d
+```
 
 #### 3-5 コンテナ中に入り、Laravelに関する設定する
-> [ec2-user@ip-{プライベートIP} ~ {リポジトリ名}]$ docker-compose exec app bash<br>
-> root@{コンテナID}:/var/www/html# cd my-laravel-app && composer install && cp ../docker/laravel/.env .env && chmod 777 -R storage/ && php artisan key:generate && php artisan config:cache && php artisan migrate<br>
+```
+[ec2-user@ip-{プライベートIP} ~ {リポジトリ名}]$ docker-compose exec app bash
+root@{コンテナID}:/var/www/html# cd my-laravel-app && composer install && cp ../docker/laravel/.env .env && chmod 777 -R storage/ && php artisan key:generate && php artisan config:cache && php artisan migrate
+```
 
 #### 3-6 コンテナを抜け、再起動する
-> root@{コンテナID}:/var/www/html# exit<br>
-> [ec2-user@ip-{プライベートIP} ~ {リポジトリ名}]$ docker-compose restart<br>
+```
+root@{コンテナID}:/var/www/html# exit
+[ec2-user@ip-{プライベートIP} ~ {リポジトリ名}]$ docker-compose restart
+```
 
 #### 3-7 アプリが見えるか確認(ブラウザで確認)
-> http://{EC2のIPアドレス}<br>
+```
+http://{EC2のIPアドレス}
+```
 
 #### 3-8　秘密鍵・公開鍵を設定
-> // 秘密鍵・公開鍵の作成を行う<br>
-> [ec2-user@ip-{プライベートIP} ~]$ssh-keygen -m pem<br>
+```
+// 秘密鍵・公開鍵の作成を行う
+[ec2-user@ip-{プライベートIP} ~]$ssh-keygen -m pem
+```
 ##### ※色々と英語で聞かれますが、何も入力せず Enter 連打で OK
 
-> // 公開鍵をauthorized_keysに追記する<br>
-> [ec2-user@ip-{プライベートIP} ~]$ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys<br>
+```
+// 公開鍵をauthorized_keysに追記する
+[ec2-user@ip-{プライベートIP} ~]$ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
-> // 秘密鍵をコピーして、メモ帳などにメモしておく<br>
-> [ec2-user@ip-{プライベートIP} ~]$ cat ~/.ssh/id_rsa<br>
 
+// 秘密鍵をコピーして、メモ帳などにメモしておく
+[ec2-user@ip-{プライベートIP} ~]$ cat ~/.ssh/id_rsa
+```
 
 ### 4 CircleCIの設定
 #### 4-1 ログインする
@@ -316,12 +334,12 @@ $ cat ~/.ssh/id_rsa
 ###### 入力後の画面にてそれぞれName,Valueが入っていることを確認する
 ![image](https://user-images.githubusercontent.com/66664167/92481230-0205d280-f221-11ea-8325-9c25d2ba924f.png)
 
-<br>
+
 
 #### 設定完了！お疲れ様でした！
 #### ここからいよいよCI/CD体験をしていきましょう！
 
-<br>
+
 
 ### 5 ローカルで変更を加えてCI/CDの動作を確認する
 
