@@ -2,27 +2,38 @@
 
 ![image](https://user-images.githubusercontent.com/66664167/92107539-ecf40280-ee20-11ea-8651-7261697f7995.png)
 
-
-## ★　今日やること　★
-### 1.目的
-------------------------------------整える-----------------------------------------
-![image](https://user-images.githubusercontent.com/66664167/92490881-8447c400-f22c-11ea-9e32-5fdcdd313832.png)
-
-
-### 2.今日のゴール
-
-
-
-### 3.環境・言語
-
-
-
-### 4.事前準備
+## 事前準備
 - AWS アカウント作成
 - Dockerインストール
 - docker-composeインストール
 - Gitインストール
 - GitHub アカウント作成
+- Windowsの場合、SSH接続ができる環境の用意(Tera Termなど）
+([Tera Termのインストールはこちら](https://ja.osdn.net/projects/ttssh2/))
+
+
+## ★　今日やること　★
+### 1.目的
+#### CircleCI ✖︎ AWSでCI/CDを体験する
+
+
+### 2.今日のゴール
+#### - ローカルからGithubにPushすると、本番環境（EC2）に変更が反映されていることを確認する
+#### - 間違いテストの場合、変更が反映されないことを確認する
+#### - CircleCIの仕組みを体系的に理解する
+------------------------------------整える-----------------------------------------
+![image](https://user-images.githubusercontent.com/66664167/92490881-8447c400-f22c-11ea-9e32-5fdcdd313832.png)
+
+
+
+### 3.環境・言語
+- Docker
+- AWS(EC2インスタンス)
+- CircleCI
+- Git
+- Github
+- Laravel(PHP)
+
 
 ## はじめに
 ### CI/CDとは
@@ -108,8 +119,6 @@ CI/CDとは高度な継続的自動化と継続的監視をアプリケーショ
 #### デメリット
 - Clouldなのでビルドの度に毎回IPが変わる
 - GitHubまたはBitbucketとの連携が前提
-
-
 
 
 
