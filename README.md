@@ -196,6 +196,7 @@ http://localhost:8989 にアクセスする
 4. OKボタンを押すとEC2インスタンスにSSH接続できる
 
 #### 3-3 リポジトリをcloneする
+> // EC2にログイン<br>
 > [ec2-user@ip-{プライベートIP} ~]$ git clone https://github.com/{ユーザー名}/{リポジトリ}.git<br>
 
 #### 3-4 コンテナを立ち上げる
@@ -242,6 +243,7 @@ https://circleci.com/ja/vcs-authorize/
 ##### 4-2-3 「Start Building」ボタンを押下する
 ![image](https://user-images.githubusercontent.com/66664167/92300523-7aa52e80-ef96-11ea-8856-8511d7febf14.png)
 
+
 #### 4-3 EC2インスタンスと関連付ける
 テストが開始される（各種設定前なのでFAILDになるが問題ありません）
 ##### 4-3-1 「Project Setting」ボタンを押下する
@@ -252,11 +254,13 @@ https://circleci.com/ja/vcs-authorize/
 
 ##### 4-3-3 ターミナルを開き、EC2インスタンスにログインして、SSH Keyをコピーする
 
-> // EC2にログイン<br>
-> $ ssh -i ~/.ssh/[pem key名] [ユーザー名]@[IP]<br>
+```
+// EC2にログイン
+$ ssh -i ~/.ssh/[pem key名] [ユーザー名]@[IP]
 
-> // SSH Keyが表示される<br>
-> $ cat ~/.ssh/id_rsa
+// SSH Keyが表示される
+$ cat ~/.ssh/id_rsa
+```
 
 コピーする
 ![image](https://user-images.githubusercontent.com/66664167/92301975-2d7b8980-efa3-11ea-9ab9-461ff58fa09b.png)
@@ -268,6 +272,7 @@ https://circleci.com/ja/vcs-authorize/
 
 ##### 入力した内容が表示されていることを確認する（Keyは変換されて表示されているため、実際の入力した内容と表示は異なります）
 ![image](https://user-images.githubusercontent.com/66664167/92482470-9de40e00-f222-11ea-8bcb-78bb6130ccd5.png)
+
 
 
 #### 4-4 環境変数を設定する
@@ -287,12 +292,13 @@ https://circleci.com/ja/vcs-authorize/
 ![image](https://user-images.githubusercontent.com/66664167/92479794-f6191100-f21e-11ea-8d4a-ade01ec2fd12.png)
 
 ##### 4-4-6 「Environment Variable Name」と「Value」にそれぞれ下記の通り入力し、 「Add Environment Variables」を押下する
-
-① Environment Variable Name: USER_NAME<br>
-　 Value: EC2インスタンスのユーザー名（例：ec2-user）
+```
+① Environment Variable Name : USER_NAME
+　 Value                     : EC2インスタンスのユーザー名（例：ec2-user）
   
-② Environment Variable Name: HOST_NAME<br>
-　 Value: EC2インスタンスのIPアドレス
+② Environment Variable Name : HOST_NAME
+　 Value                     : EC2インスタンスのIPアドレス
+```
 
 ![image](https://user-images.githubusercontent.com/66664167/92480545-01b90780-f220-11ea-9379-feb90dc1c7c3.png)
 
@@ -319,11 +325,12 @@ https://circleci.com/ja/vcs-authorize/
 
 
 ##### 5-1-1 ソース変更後、変更をリポジトリにpushする。
+```
+~/Desktop/meet-up_CI-CD$ git add .<br>
+~/Desktop/meet-up_CI-CD$ git commit -m "fix"<br>
+~/Desktop/meet-up_CI-CD$ git push
+```
 
-> $ git add .<br>
-> $ git commit -m "fix"<br>
-> $ git push
- 
 ##### 5-1-2 CircleCIを確認する
 
 「Running」状態になっている
@@ -345,11 +352,11 @@ https://circleci.com/ja/vcs-authorize/
 
 
 ##### 5-2-2 ソース変更後、変更をリポジトリにpushする。
-
-> $ git add .<br>
-> $ git commit -m "fix"<br>
-> $ git push
-
+```
+~/Desktop/meet-up_CI-CD$ git add .<br>
+~/Desktop/meet-up_CI-CD$ git commit -m "fix"<br>
+~/Desktop/meet-up_CI-CD$ git push
+```
 
 ##### 5-2-3 CircleCIを確認する
 
