@@ -1,5 +1,8 @@
 # CircleCI ✖︎ AWSでCI/CDを体験しよう！！
 
+![image](https://user-images.githubusercontent.com/66664167/92107539-ecf40280-ee20-11ea-8651-7261697f7995.png)
+
+
 ## はじめに
 ### CI/CDとは
 
@@ -51,6 +54,7 @@ CI/CDとは高度な継続的自動化と継続的監視をアプリケーショ
 - 拡張性が高い。プロジェクトに合わせてカスタマイズしやすい
 - オンプレ上に構築するため、IPが固定される
 - ドキュメントが豊富で調査しやすい
+
 #### デメリット
 サーバを用意する必要があるため、費用がかかる、準備に時間がかかる
 本番を含めワークフローに組み込むため、導入は計画的に行う必要がある
@@ -79,6 +83,7 @@ CI/CDとは高度な継続的自動化と継続的監視をアプリケーショ
 - ドキュメントが豊富で調査しやすい
 - sshでコンテナに入れるので、デバッグしやすい
 - 無料で使い始められる
+
 #### デメリット
 - Clouldなのでビルドの度に毎回IPが変わる
 - GitHubまたはBitbucketとの連携が前提
@@ -102,6 +107,7 @@ CI/CDとは高度な継続的自動化と継続的監視をアプリケーショ
 - AWS EC2インスタンの起動、Elastic IPの設定　[設定方法はこちら](https://github.com/miracleave-ltd/aws_ec2)
 - Docker　インストール
 - docker-compose インストール
+- Gitインストール
 - GitHub アカウント作成
 
 
@@ -109,10 +115,15 @@ CI/CDとは高度な継続的自動化と継続的監視をアプリケーショ
 
 ### 1. リポジトリを作成
 #### 1-1 GitHubにアクセスする
-[こちらから該当ファイルを取得する](https://github.com/miracleave-ltd/meet-up_CI-CD)
+[リポジトリにアクセス](https://github.com/miracleave-ltd/meet-up_CI-CD)
 
-#### 1-2 ZIPファイルをダウンロードする
-![image](https://user-images.githubusercontent.com/66664167/92227895-f3967e80-eee1-11ea-9584-617df0e14f53.png)
+#### 1-2 FORKする
+![image](https://user-images.githubusercontent.com/66664167/92993991-68e0ff80-f531-11ea-8906-c8597b8acb01.png)
+
+##### [ユーザー名]/meet-up_CI-CDになっていることを確認する
+![image](https://user-images.githubusercontent.com/66664167/92994008-9332bd00-f531-11ea-8354-3ba81dba2440.png)
+
+
 
 #### 1-3 ローカルにディレクトリを作り、ダウンロードしたファイルを格納する
 ターミナルを使用します。
