@@ -1,5 +1,8 @@
 # CircleCI ✖︎ AWSでCI/CDを体験しよう！！
 
+![image](https://user-images.githubusercontent.com/66664167/92107539-ecf40280-ee20-11ea-8651-7261697f7995.png)
+
+
 ## はじめに
 ### CI/CDとは
 
@@ -109,9 +112,9 @@ CI/CDとは高度な継続的自動化と継続的監視をアプリケーショ
 
 ### 1. リポジトリを作成
 #### 1-1 GitHubにアクセスする
-[こちらから該当ファイルを取得する](https://github.com/miracleave-ltd/meet-up_CI-CD)
+[こちらからリポジトリにアクセス](https://github.com/miracleave-ltd/meet-up_CI-CD)
 
-#### 1-2 ZIPファイルをダウンロードする
+#### 1-2 FORKする
 ![image](https://user-images.githubusercontent.com/66664167/92227895-f3967e80-eee1-11ea-9584-617df0e14f53.png)
 
 #### 1-3 ローカルにディレクトリを作り、ダウンロードしたファイルを格納する
