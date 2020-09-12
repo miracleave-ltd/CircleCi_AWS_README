@@ -169,29 +169,31 @@ root@06e2xxxxxx:/var/www/html# cd my-laravel-app && composer install && cp ../do
 root@06e2xxxxxx:/var/www/html# exit
 ```
 
-#### 2-4 再起動する 
-> $ docker-compose down && docker-compose up
-
-
-#### 2-5 ローカル上でアプリの起動を確認する
-http://localhost:8989 にアクセスする
+#### 2-5 コンテナを再起動する 
+```
+~/Desktop/meet-up_CI-CD $ docker-compose down && docker-compose up
+```
 
 ### 3.EC2の設定
 #### 3-1 EC2の設定をする
-(https://github.com/miracleave-ltd/aws_ec2)
+[手順に沿ってEC2インスタンスを起動する](https://github.com/miracleave-ltd/aws_ec2)
+
 ##### ※「インスタンスの詳細を設定する」という画面で【ユーザーデータ】という項目があるので、そこに下記のファイルの内容を設定する
-> \#!/bin/bash<br>
-> \# Dockerをインストール<br>
-> sudo yum update -y<br>
-> sudo yum install -y docker<br>
-> sudo service docker start<br>
-> sudo chkconfig docker on<br>
-> sudo usermod -a -G docker ec2-user<br>
-> \# docker-composeをインストール<br>
-> sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose<br>
-> sudo chmod +x /usr/local/bin/docker-compose<br>
-> \# gitインストール<br>
-> sudo yum install -y git<br>
+
+```
+\#!/bin/bash<br>
+\# Dockerをインストール<br>
+sudo yum update -y<br>
+sudo yum install -y docker<br>
+sudo service docker start<br>
+sudo chkconfig docker on<br>
+sudo usermod -a -G docker ec2-user<br>
+\# docker-composeをインストール<br>
+sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose<br>
+sudo chmod +x /usr/local/bin/docker-compose<br>
+\# gitインストール<br>
+sudo yum install -y git<br>
+```
 
 #### 3-2 EC２に接続する
 ##### Macの方
