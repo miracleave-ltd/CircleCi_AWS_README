@@ -196,7 +196,6 @@ http://localhost:8989 にアクセスする
 4. OKボタンを押すとEC2インスタンスにSSH接続できる
 
 #### 3-3 リポジトリをcloneする
-> // EC2にログイン<br>
 > [ec2-user@ip-{プライベートIP} ~]$ git clone https://github.com/{ユーザー名}/{リポジトリ}.git<br>
 
 #### 3-4 コンテナを立ち上げる
