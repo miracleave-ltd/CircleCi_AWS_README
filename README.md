@@ -104,8 +104,8 @@ CI/CDとは高度な継続的自動化と継続的監視をアプリケーショ
 
 ### 4.事前準備
 - AWS アカウント作成
-- Docker　インストール
-- docker-compose インストール
+- Dockerインストール
+- docker-composeインストール
 - Gitインストール
 - GitHub アカウント作成
 
@@ -123,50 +123,51 @@ CI/CDとは高度な継続的自動化と継続的監視をアプリケーショ
 ![image](https://user-images.githubusercontent.com/66664167/92994008-9332bd00-f531-11ea-8354-3ba81dba2440.png)
 
 #### 1-3 ローカルの任意の場所にリポジトリをクローンする
-ターミナルを使用します。
+※ターミナル（コマンドプロンプト)を使用します。
 
-> // ディレクトリ作成(任意の場所を指定して作成してください）<br>
-> $ mkdir [ファイルの格納場所のパス]/[ディレクトリ名]<br>
-> 例：$ mkdir mkdir ~/projects/myapp
+##### 1-3-1 リポジトリのURLをコピーする
+![image](https://user-images.githubusercontent.com/54019059/92994174-f3762e80-f532-11ea-9a87-ab4fad897171.png)
 
-#### 1-4 自分のGitHubにリポジトリを作成する
-GitHubにログインして「New」ボタンを押下する
-![image](https://user-images.githubusercontent.com/66664167/92230424-0f038880-eee6-11ea-967b-de06bb69fd20.png)
+##### 1-3-2 クローンする
 
-「Repository name」を入力、「Public」にチェック（初期値）、「Create repository」ボタン押下し作成する
-（今回はmy-favarite-bookで設定)
-![image](https://user-images.githubusercontent.com/66664167/92229246-20e42c00-eee4-11ea-8da7-aa408c91ee17.png)
+```
+例：Desktopにクローンする場合
+~ $ cd ~/Desktop
+~/Desktop $ git clone [コピーしたURL] 
+```
 
-リポジトリ作成後画面
-![image](https://user-images.githubusercontent.com/66664167/92230877-c6989a80-eee6-11ea-942a-76feac5c08ad.png)
-
-
-#### 1-5 ローカルの該当ソースをリポジトリに反映する
-> $ git init <br>
-> $ git add .<br>
-> $ git commit -m "init" <br>
-> $ git branch -M master <br>
-> $ git remote add origin https://github.com/[ユーザー名]/[リポジトリ名].git <br>
-> $ git push -u origin master <br>
-
-リポジトリ反映後画面
-![image](https://user-images.githubusercontent.com/66664167/92231621-07dd7a00-eee8-11ea-826a-235b83254d4b.png)
+#### ※以降、リポジトリがデスクトップに存在している前提でコマンドを表記します。
+適宜、自分のリポジトリの場所に置き換えてコマンド実行してください。
+```
+例：
+~/Desktop/meet-up_CI-CD $　[コマンド]
+```
 
 
 ### 2. 初期設定
-Laravelのライブラリパッケージ等をdockerコンテナ内にインストールする
+ローカル内のDockerコンテナにLaravelのライブラリパッケージ等をインストールする
 
 #### 2-1 コンテナを立ち上げる
-> $ docker-compose up -d
-
+```
+~/Desktop/meet-up_CI-CD $ docker-compose up -d
+```
 #### 2-2 dockerコンテナに入る
-> $ docker-compose exec app bash
+```
+~/Desktop/meet-up_CI-CD $ docker-compose exec app bash
+```
+
+コンテナ内に入ると、[root@06e2xxxxxx:/var/www/html# ]のような表示に変わります。ローカルの環境によって差分が出ますが全く一緒じゃなくても問題ありません。
+（コンテナを実行している箇所を表示しています）
 
 #### 2-3 インストールする
-> $ cd my-laravel-app && composer install && cp ../docker/laravel/.env .env && chmod 777 -R storage/ && php artisan key:generate && php artisan config:cache && php artisan migrate 
-<br>
+```
+root@06e2xxxxxx:/var/www/html# cd my-laravel-app && composer install && cp ../docker/laravel/.env .env && chmod 777 -R storage/ && php artisan key:generate && php artisan config:cache && php artisan migrate 
+```
 
-> // コンテナを抜ける <br> $ exit 
+#### 2-4 コンテナを抜ける
+```
+root@06e2xxxxxx:/var/www/html# exit
+```
 
 #### 2-4 再起動する 
 > $ docker-compose down && docker-compose up
