@@ -211,7 +211,7 @@ sudo yum install -y git
 ##### Macの方
 ```
 // EC2にログイン
-~/Desktop/meet-up_CI-CD $ ssh -i ~/.ssh/{pem key名} {ユーザー名}@{IP}<br>
+~/Desktop/meet-up_CI-CD $ ssh -i ~/.ssh/{pem key名} {ユーザー名}@{IP}
 ```
 
 ##### Windowsの方(tera term)
@@ -222,7 +222,6 @@ sudo yum install -y git
 
 #### 3-3 リポジトリをcloneする
 ```
-// EC2にログイン
 [ec2-user@ip-{プライベートIP} ~]$ git clone https://github.com/{ユーザー名}/{リポジトリ}.git
 ```
 
@@ -250,19 +249,15 @@ http://{EC2のIPアドレス}
 ```
 
 #### 3-8　秘密鍵・公開鍵を設定
+##### ※色々と英語で聞かれますが、何も入力せず Enter 連打で OK
 ```
 // 秘密鍵・公開鍵の作成を行う
 [ec2-user@ip-{プライベートIP} ~]$ssh-keygen -m pem
 ```
-##### ※色々と英語で聞かれますが、何も入力せず Enter 連打で OK
 
 ```
 // 公開鍵をauthorized_keysに追記する
 [ec2-user@ip-{プライベートIP} ~]$ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
-
-
-// 秘密鍵をコピーして、メモ帳などにメモしておく
-[ec2-user@ip-{プライベートIP} ~]$ cat ~/.ssh/id_rsa
 ```
 
 ### 4 CircleCIの設定
