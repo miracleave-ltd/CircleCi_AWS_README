@@ -191,17 +191,17 @@ root@06e2xxxxxx:/var/www/html# exit
 ##### ※「インスタンスの詳細を設定する」という画面で【ユーザーデータ】という項目があるので、そこに下記のファイルの内容を設定する
 
 ```
-\#!/bin/bash
-\# Dockerをインストール
+#!/bin/bash
+# Dockerをインストール
 sudo yum update -y
 sudo yum install -y docker
 sudo service docker start
 sudo chkconfig docker on
 sudo usermod -a -G docker ec2-user
-\# docker-composeをインストール
+# docker-composeをインストール
 sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
-\# gitインストール
+# gitインストール
 sudo yum install -y git
 ```
 ![image](https://user-images.githubusercontent.com/66664167/92995757-3808c680-f541-11ea-9201-99b009bf15ef.png)
