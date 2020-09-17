@@ -174,12 +174,12 @@ CI/CDとは高度な継続的自動化と継続的監視をアプリケーショ
 
 #### 2-3 インストールする
 ```
-root@06e2xxxxxx:/var/www/html# cd my-laravel-app && composer install && cp ../docker/laravel/.env .env && chmod 777 -R storage/ && php artisan key:generate && php artisan config:cache && php artisan migrate 
+cd my-laravel-app && composer install && cp ../docker/laravel/.env .env && chmod 777 -R storage/ && php artisan key:generate && php artisan config:cache && php artisan migrate 
 ```
 
 #### 2-4 コンテナを抜ける
 ```
-root@06e2xxxxxx:/var/www/html# exit
+exit
 ```
 
 #### 2-5 コンテナを再起動する 
