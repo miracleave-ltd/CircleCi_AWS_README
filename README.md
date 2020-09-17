@@ -363,8 +363,8 @@ $ cat ~/.ssh/id_rsa
 
 ##### 5-1-1 ソース変更後、変更をリポジトリにpushする。
 ```
-~/Desktop/meet-up_CI-CD$ git add .<br>
-~/Desktop/meet-up_CI-CD$ git commit -m "fix"<br>
+~/Desktop/meet-up_CI-CD$ git add .
+~/Desktop/meet-up_CI-CD$ git commit -m "fix"
 ~/Desktop/meet-up_CI-CD$ git push
 ```
 
