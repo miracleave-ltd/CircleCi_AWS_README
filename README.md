@@ -159,6 +159,9 @@ CI/CDとは高度な継続的自動化と継続的監視をアプリケーショ
 
 #### 2-1 コンテナを立ち上げる
 ```
+// リポジトリに移動する
+~/Desktop $ cd ~/Desktop/meet-up_CI-CD
+// コンテナを立ち上げる
 ~/Desktop/meet-up_CI-CD $ docker-compose up -d
 ```
 #### 2-2 dockerコンテナに入る
