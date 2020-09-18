@@ -164,7 +164,7 @@ CI/CDとは高度な継続的自動化と継続的監視をアプリケーショ
 編集後
 ![image](https://user-images.githubusercontent.com/66664167/93543159-c7750600-f995-11ea-911b-c488dae3c699.png)
 
-### 本番環境に反映する際は[80:80]でプッシュすること
+### ★本番環境に反映する際は[80:80]でプッシュすること★
 
 
 
@@ -198,10 +198,19 @@ exit
 ~/Desktop/meet-up_CI-CD $ docker-compose down && docker-compose up
 ```
 
+#### 2-6 起動を確認する
+http://localhost:8989/
+
+### ★本番環境に反映する際は[80:80]でプッシュすること★
+
+
 ### 3.EC2の設定
 #### 3-1 EC2の設定をする
 [手順に沿ってEC2インスタンスを起動する](https://github.com/miracleave-ltd/aws_ec2)
 
+### ★注意★　上記手順の「Elastic IP」の設定は不要
+
+### ★注意★　上記手順の「インスタンスの詳細を設定する」にて変更あり
 ##### ※「インスタンスの詳細を設定する」という画面で【ユーザーデータ】という項目があるので、そこに下記のファイルの内容を設定する
 
 ```
@@ -212,16 +221,14 @@ sudo yum install -y docker
 sudo service docker start
 sudo chkconfig docker on
 sudo usermod -a -G docker ec2-user
-# docker-composeをインストール
 sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
-# gitインストール
 sudo yum install -y git
 ```
 ![image](https://user-images.githubusercontent.com/66664167/92995757-3808c680-f541-11ea-9201-99b009bf15ef.png)
 
 
-#### 3-2 EC２に接続する
+#### 3-2 EC2に接続する
 ##### Macの方
 ```
 // EC2にログイン
@@ -229,10 +236,21 @@ sudo yum install -y git
 ```
 
 ##### Windowsの方(tera term)
-1. tera termを開き、新しい接続という画面にホスト(T)とあるので、そこにEC2のIPアドレスを設定する
-2. セキュリティ警告の画面がでた場合、[このホストをknown hostsリストに追加する]という項目のチェックを外し、続行ボタンを押す
-3. SSH認証画面が表示されたら、ユーザー名の欄に「ec2-user」を設定し、AWSからダウンロードしてきた秘密鍵を設定する
-4. OKボタンを押すとEC2インスタンスにSSH接続できる
+###### 1.パブリックIPアドレスコピーする（プライベートIPではないので注意）
+![image](https://user-images.githubusercontent.com/66664167/93545033-6d2a7400-f99a-11ea-8f91-de5a71ba21e7.png)
+
+###### 2. tera termを開き、「新しい接続」画面の「ホスト(T)」、に、EC2のパブリックIPアドレスを入力する
+![image](https://user-images.githubusercontent.com/66664167/93545337-1bceb480-f99b-11ea-88d4-ff861d86bc06.png)
+
+###### 3.続行を押下する
+![image](https://user-images.githubusercontent.com/66664167/93545458-651f0400-f99b-11ea-844d-612305c00eaa.png)
+
+###### 4.「SSH認証画面」の「ユーザー名」に「ec2-user」を入力、「認証方式」で「秘密鍵」をチェックして、ダウンロードしたpemファイルを指定する
+![image](https://user-images.githubusercontent.com/66664167/93546217-56395100-f99d-11ea-8714-555ac00934cc.png)
+
+###### 5. 上記設定完了したら「OK」ボタンを押下して接続確認する。
+![image](https://user-images.githubusercontent.com/66664167/93546226-5c2f3200-f99d-11ea-872a-1c447ed8d1cc.png)
+
 
 #### 3-3 リポジトリをcloneする
 ```
