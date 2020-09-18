@@ -158,13 +158,16 @@ CI/CDとは高度な継続的自動化と継続的監視をアプリケーショ
 ローカル内のDockerコンテナにLaravelのライブラリパッケージ等をインストールする
 
 #### 2-0 docker-compose.yml のポート番号を編集する
-編集前
-![image](https://user-images.githubusercontent.com/66664167/93543078-91d01d00-f995-11ea-918b-9fb9cd60e6f1.png)
 
-編集後
+##### 編集前
+![image](https://user-images.githubusercontent.com/66664167/93546902-d7451800-f99e-11ea-8eb4-83ff5c6a7384.png)
+
+
+##### 編集後
 ![image](https://user-images.githubusercontent.com/66664167/93543159-c7750600-f995-11ea-911b-c488dae3c699.png)
 
-### ★本番環境に反映する際は[80:80]でプッシュすること★
+
+#### ★本番環境に反映する際は[80:80]でプッシュすること★
 
 
 
@@ -208,9 +211,9 @@ http://localhost:8989/
 #### 3-1 EC2の設定をする
 [手順に沿ってEC2インスタンスを起動する](https://github.com/miracleave-ltd/aws_ec2)
 
-### ★注意★　上記手順の「Elastic IP」の設定は不要
+#### ★注意★　上記手順の「Elastic IP」の設定は不要
 
-### ★注意★　上記手順の「インスタンスの詳細を設定する」にて変更あり
+#### ★注意★　上記手順の「インスタンスの詳細を設定する」にて変更あり
 ##### ※「インスタンスの詳細を設定する」という画面で【ユーザーデータ】という項目があるので、そこに下記のファイルの内容を設定する
 
 ```
@@ -237,16 +240,16 @@ sudo yum install -y git
 
 ##### Windowsの方(tera term)
 ###### 1.パブリックIPアドレスコピーする（プライベートIPではないので注意）
-![image](https://user-images.githubusercontent.com/66664167/93545033-6d2a7400-f99a-11ea-8f91-de5a71ba21e7.png)
+![image](https://user-images.githubusercontent.com/66664167/93546598-17f06180-f99e-11ea-9483-aea979af72fb.png)
 
 ###### 2. tera termを開き、「新しい接続」画面の「ホスト(T)」、に、EC2のパブリックIPアドレスを入力する
-![image](https://user-images.githubusercontent.com/66664167/93545337-1bceb480-f99b-11ea-88d4-ff861d86bc06.png)
+![image](https://user-images.githubusercontent.com/66664167/93546679-4706d300-f99e-11ea-9ff2-1049b5f67559.png)
 
 ###### 3.続行を押下する
 ![image](https://user-images.githubusercontent.com/66664167/93545458-651f0400-f99b-11ea-844d-612305c00eaa.png)
 
 ###### 4.「SSH認証画面」の「ユーザー名」に「ec2-user」を入力、「認証方式」で「秘密鍵」をチェックして、ダウンロードしたpemファイルを指定する
-![image](https://user-images.githubusercontent.com/66664167/93546217-56395100-f99d-11ea-8714-555ac00934cc.png)
+![image](https://user-images.githubusercontent.com/66664167/93546769-82090680-f99e-11ea-9ce7-719cf0b31e60.png)
 
 ###### 5. 上記設定完了したら「OK」ボタンを押下して接続確認する。
 ![image](https://user-images.githubusercontent.com/66664167/93546226-5c2f3200-f99d-11ea-872a-1c447ed8d1cc.png)
@@ -266,18 +269,18 @@ sudo yum install -y git
 #### 3-5 コンテナ中に入り、Laravelに関する設定する
 ```
 [ec2-user@ip-{プライベートIP} ~ {リポジトリ名}]$ docker-compose exec app bash
-root@{コンテナID}:/var/www/html# cd my-laravel-app && composer install && cp ../docker/laravel/.env .env && chmod 777 -R storage/ && php artisan key:generate && php artisan config:cache && php artisan migrate
+cd my-laravel-app && composer install && cp ../docker/laravel/.env .env && chmod 777 -R storage/ && php artisan key:generate && php artisan config:cache && php artisan migrate
 ```
 
 #### 3-6 コンテナを抜け、再起動する
 ```
-root@{コンテナID}:/var/www/html# exit
+exit
 [ec2-user@ip-{プライベートIP} ~ {リポジトリ名}]$ docker-compose restart
 ```
 
 #### 3-7 アプリが見えるか確認(ブラウザで確認)
 ```
-http://{EC2のIPアドレス}
+http://{EC2パブリックIPアドレス}
 ```
 
 #### 3-8　秘密鍵・公開鍵を設定
