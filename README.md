@@ -25,7 +25,7 @@
 
 
 ### 3.環境・言語
-- Docker
+-Docker
 - AWS(EC2インスタンス)
 - CircleCI
 - Git
