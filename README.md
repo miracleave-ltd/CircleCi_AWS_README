@@ -167,6 +167,8 @@ CI/CDとは高度な継続的自動化と継続的監視をアプリケーショ
 ![image](https://user-images.githubusercontent.com/66664167/93543159-c7750600-f995-11ea-911b-c488dae3c699.png)
 
 
+
+
 #### ★本番環境に反映する際は[80:80]でプッシュすること★
 
 
@@ -389,6 +391,9 @@ $ cat ~/.ssh/id_rsa
 
 ##### After
 ![image](https://user-images.githubusercontent.com/66664167/92484786-0df39380-f225-11ea-9a7f-6a22c5627b00.png)
+
+
+![image](https://user-images.githubusercontent.com/55343055/93594405-bb6a6200-f9f0-11ea-930c-ea51097d7377.png)
 
 
 ##### 5-1-1 ソース変更後、変更をリポジトリにpushする。
