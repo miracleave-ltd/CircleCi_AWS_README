@@ -158,6 +158,14 @@ CI/CDとは高度な継続的自動化と継続的監視をアプリケーショ
 ローカル内のDockerコンテナにLaravelのライブラリパッケージ等をインストールする
 
 #### 2-0 docker-compose.yml のポート番号を編集する
+編集前
+![image](https://user-images.githubusercontent.com/66664167/93543078-91d01d00-f995-11ea-918b-9fb9cd60e6f1.png)
+
+編集後
+![image](https://user-images.githubusercontent.com/66664167/93543159-c7750600-f995-11ea-911b-c488dae3c699.png)
+
+### 本番環境に反映する際は[80:80]でプッシュすること
+
 
 
 #### 2-1 コンテナを立ち上げる
