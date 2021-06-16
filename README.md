@@ -295,8 +295,9 @@ http://{EC2パブリックIPアドレス}
 コピーする
 ![image](https://user-images.githubusercontent.com/66664167/92301975-2d7b8980-efa3-11ea-9ab9-461ff58fa09b.png)
 
-#### 3-9 ターミナルを開き、EC2インスタンスにログインして、SSH Keyをコピーする
 ```
+ターミナルを開き、EC2インスタンスにログインして、SSH Keyをコピーする
+
 // EC2にログイン
 $ ssh -i ~/.ssh/[pem key名] [ユーザー名]@[IP]
 
