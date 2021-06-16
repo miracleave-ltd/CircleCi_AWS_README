@@ -260,8 +260,8 @@ sudo yum install -y git
 
 #### 3-4 コンテナを立ち上げる
 ```
-[ec2-user@ip-{プライベートIP} ~]$ cd {リポジトリ名}
-[ec2-user@ip-{プライベートIP} ~ {リポジトリ名}]$ docker-compose up -d
+[ec2-user@ip-{プライベートIP} ~]$ cd {meet-up_CI-CD}
+[ec2-user@ip-{プライベートIP} ~ {meet-up_CI-CD}]$ docker-compose up -d
 ```
 
 #### 3-5 コンテナ中に入り、Laravelに関する設定する
