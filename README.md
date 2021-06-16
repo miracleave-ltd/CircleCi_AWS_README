@@ -293,6 +293,19 @@ http://{EC2パブリックIPアドレス}
 [ec2-user@ip-{プライベートIP} ~]$ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 ```
 
+```
+ターミナルを開き、EC2インスタンスにログインして、SSH Keyをコピーする
+
+// EC2にログイン
+$ ssh -i ~/.ssh/[pem key名] [ユーザー名]@[IP]
+
+// SSH Keyが表示される
+$ cat ~/.ssh/id_rsa
+```
+
+コピーする
+![image](https://user-images.githubusercontent.com/66664167/92301975-2d7b8980-efa3-11ea-9ab9-461ff58fa09b.png)
+
 ### 4 CircleCIの設定
 #### 4-1 ログインする
 https://circleci.com/ja/vcs-authorize/
@@ -319,20 +332,6 @@ https://circleci.com/ja/vcs-authorize/
 
 ##### 4-3-2 メニューの「SSH Keys」ボタンを押下する
 ![image](https://user-images.githubusercontent.com/66664167/92300833-16379e80-ef99-11ea-87de-99bc615f8c53.png)
-
-##### 4-3-3 ターミナルを開き、EC2インスタンスにログインして、SSH Keyをコピーする
-
-```
-// EC2にログイン
-$ ssh -i ~/.ssh/[pem key名] [ユーザー名]@[IP]
-
-// SSH Keyが表示される
-$ cat ~/.ssh/id_rsa
-```
-
-コピーする
-![image](https://user-images.githubusercontent.com/66664167/92301975-2d7b8980-efa3-11ea-9ab9-461ff58fa09b.png)
-
 
 ##### 4-3-4 ページ下部の「Add SSH Keys」ボタンを押下すし、IPアドレスとコピーしたKeyを入力する
 ![image](https://user-images.githubusercontent.com/66664167/92301125-d58d5480-ef9b-11ea-9f27-ee3ce9b92fdc.png)
