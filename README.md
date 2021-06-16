@@ -389,7 +389,7 @@ $ cat ~/.ssh/id_rsa
 下記のソースを編集
 my-laravel-app > resources > views > layouts > app.blade.php 
 ```
-![image]()
+![image](https://user-images.githubusercontent.com/66664167/122146152-7bf27880-ce91-11eb-9cd1-8ab8450de0c6.png)
 ##### Before
 ![image](https://user-images.githubusercontent.com/66664167/92484565-ccfb7f00-f224-11ea-9d07-dc6482b7fc82.png)
 
