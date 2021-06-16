@@ -301,7 +301,7 @@ https://circleci.com/ja/vcs-authorize/
 
 
 #### 4-2 該当プロジェクトの設定をする
-##### 4-2-1 該当プロジェクトの「Set Up Project」を押下する
+##### 4-2-1 該当プロジェクトの「Set Up Project」を押下する。次の画面では "If you already..." の方を選択し、Let's Goを選択
 ![image](https://user-images.githubusercontent.com/66664167/92300453-c6a3a380-ef95-11ea-8aee-ab2a4078691c.png)
 ![image](https://user-images.githubusercontent.com/66664167/122141471-58770000-ce88-11eb-878c-782cbf53b834.png)
 
