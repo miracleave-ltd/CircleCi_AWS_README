@@ -260,7 +260,7 @@ sudo yum install -y git
 
 #### 3-4 コンテナを立ち上げる
 ```
-[ec2-user@ip-{プライベートIP} ~]$ cd {meet-up_CI-CD}
+[ec2-user@ip-{プライベートIP} ~]$ cd meet-up_CI-CD
 [ec2-user@ip-{プライベートIP} ~ {meet-up_CI-CD}]$ docker-compose up -d
 ```
 
