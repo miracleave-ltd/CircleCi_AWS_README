@@ -255,7 +255,7 @@ sudo yum install -y git
 
 #### 3-3 リポジトリをcloneする
 ```
-[ec2-user@ip-{プライベートIP} ~]$ git clone https://github.com/{ユーザー名}/{リポジトリ}.git
+[ec2-user@ip-{プライベートIP} ~]$ git clone https://github.com/{ユーザー名}/meet-up_CI-CD.git
 ```
 
 #### 3-4 コンテナを立ち上げる
@@ -266,14 +266,14 @@ sudo yum install -y git
 
 #### 3-5 コンテナ中に入り、Laravelに関する設定する
 ```
-[ec2-user@ip-{プライベートIP} ~ {リポジトリ名}]$ docker-compose exec app bash
+[ec2-user@ip-{プライベートIP} ~ meet-up_CI-CD]$ docker-compose exec app bash
 cd my-laravel-app && composer install && cp ../docker/laravel/.env .env && chmod 777 -R storage/ && php artisan key:generate && php artisan config:cache && php artisan migrate
 ```
 
 #### 3-6 コンテナを抜け、再起動する
 ```
 exit
-[ec2-user@ip-{プライベートIP} ~ {リポジトリ名}]$ docker-compose restart
+[ec2-user@ip-{プライベートIP} ~ meet-up_CI-CD]$ docker-compose restart
 ```
 
 #### 3-7 アプリが見えるか確認(ブラウザで確認)
