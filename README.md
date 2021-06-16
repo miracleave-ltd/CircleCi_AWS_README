@@ -292,19 +292,17 @@ http://{EC2パブリックIPアドレス}
 // 公開鍵をauthorized_keysに追記する
 [ec2-user@ip-{プライベートIP} ~]$ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 ```
+コピーする
+![image](https://user-images.githubusercontent.com/66664167/92301975-2d7b8980-efa3-11ea-9ab9-461ff58fa09b.png)
 
+#### 3-9 ターミナルを開き、EC2インスタンスにログインして、SSH Keyをコピーする
 ```
-ターミナルを開き、EC2インスタンスにログインして、SSH Keyをコピーする
-
 // EC2にログイン
 $ ssh -i ~/.ssh/[pem key名] [ユーザー名]@[IP]
 
 // SSH Keyが表示される
 $ cat ~/.ssh/id_rsa
 ```
-
-コピーする
-![image](https://user-images.githubusercontent.com/66664167/92301975-2d7b8980-efa3-11ea-9ab9-461ff58fa09b.png)
 
 ### 4 CircleCIの設定
 #### 4-1 ログインする
