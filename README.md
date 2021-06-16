@@ -385,6 +385,7 @@ $ cat ~/.ssh/id_rsa
 #### 5-1 ローカルのクライアントソースで任意の場所を変更し、リポジトリにpushする。
 
 ##### 例：　ヘッダーのボタンをそれぞれ「登録」「一覧」から「登録ボタン」「一覧ボタン」に変更する。
+![image](https://user-images.githubusercontent.com/66664167/122142993-74c86c00-ce8b-11eb-8e75-126bf249c3ba.png)
 ##### Before
 ![image](https://user-images.githubusercontent.com/66664167/92484565-ccfb7f00-f224-11ea-9d07-dc6482b7fc82.png)
 
