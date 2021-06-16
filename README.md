@@ -386,7 +386,8 @@ $ cat ~/.ssh/id_rsa
 
 ##### 例：　ヘッダーのボタンをそれぞれ「登録」「一覧」から「登録ボタン」「一覧ボタン」に変更する。
 ```
-my-laravel-app > resources > views > layouts >app.blade.php 
+下記のソースを編集
+my-laravel-app > resources > views > layouts > app.blade.php 
 ```
 ![image]()
 ##### Before
